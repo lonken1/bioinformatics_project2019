@@ -23,3 +23,6 @@ b=$(~/Private/functions/hmmer-3.2.1/bin/hmmsearch ./mcrAhmm.fasta $file | grep "
 c=$(~/Private/functions/hmmer-3.2.1/bin/hmmsearch ./hsp70hmm.fasta $file | grep ">>" | wc -l) 
 echo "$a $b $c" >> masterflex.txt
 done
+
+# Generating a final file that lists the top 5 proteomes to continue with
+cat masterflex.txt | grep -E "[1-9] [0-9]" | sort -k 3 -n -r | head -n 5 | cut -d ' ' -f 1 > bestproteomes.txt
