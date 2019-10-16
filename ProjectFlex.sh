@@ -13,3 +13,6 @@ cat ./ref_sequences/mcrAgene_*.fasta > ./ref_sequences/allmcrA.fasta
 # Generate HMM files for both of the aligned sequence files utilizing hmmbuild
 ~/Private/functions/hmmer-3.2.1/bin/hmmbuild ./hsp70hmm.fasta ./ref_sequences/hsp70aligned.fasta
 ~/Private/functions/hmmer-3.2.1/bin/hmmbuild ./mcrAhmm.fasta ./ref_sequences/mcrAaligned.fasta  
+
+# Search for hsp70 gene sequences in proteomes
+~/Private/functions/hmmer-3.2.1/bin/hmmsearch ./hsp70hmm.fasta ./proteomes/proteome_01.fasta
