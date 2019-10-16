@@ -15,12 +15,11 @@ cat ./ref_sequences/mcrAgene_*.fasta > ./ref_sequences/allmcrA.fasta
 ~/Private/functions/hmmer-3.2.1/bin/hmmbuild ./mcrAhmm.fasta ./ref_sequences/mcrAaligned.fasta  
 
 # For loop to run both the HMM files through each of the proteomes and place them in a master file
-echo "proteome mcrA_genes hsp70_genes"
+echo "proteome mcrA_genes hsp70_genes" > masterflex.txt
 for file in ./proteomes/proteome_*.fasta
 do
 a=$(echo $file)
-~/Private/functions/hmmer-3.2.1/bin/hmmsearch ./mcrAhmm.fasta $file | grep ">>" | wc -l >> masterflex.txt
-echo "Amount of hsp70 matches:" >> masterflex.txt
-~/Private/functions/hmmer-3.2.1/bin/hmmsearch ./hsp70hmm.fasta $file | grep ">>" | wc -l >> masterflex.txt 
+b=$(~/Private/functions/hmmer-3.2.1/bin/hmmsearch ./mcrAhmm.fasta $file | grep ">>" | wc -l)
+c=$(~/Private/functions/hmmer-3.2.1/bin/hmmsearch ./hsp70hmm.fasta $file | grep ">>" | wc -l) 
 echo "$a $b $c" >> masterflex.txt
 done
