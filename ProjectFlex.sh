@@ -25,7 +25,7 @@ c=$("$3" ./hsp70hmm.fasta $file | grep ">>" | wc -l)
 echo "$a $b $c" >> masterflex.txt
 done
 
-# Generating a final file that lists the top 5 proteomes to continue with considering that the mcrA gene must be there
+# Generating a final file that lists the proteomes to continue with considering that the mcrA gene must be there
 # We gave all the proteomes with at least one mcrA gene and at least one hsp70 gene
 # The "most resistant" proteomes to pH are listed first
 cat masterflex.txt | grep -E "[1-9] [1-9]" | sort -k 3 -n -r | cut -d ' ' -f 1 > bestproteomes.txt
